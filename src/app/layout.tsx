@@ -1,7 +1,21 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { Montserrat } from 'next/font/google'
+import { Fira_Mono } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
+import { Toaster } from '@/components/ui/Toaster'
+
+const mont = Montserrat({
+  weight: '400',
+  variable: '--font-mont',
+  subsets: ['latin'],
+})
+const fira = Fira_Mono({
+  weight: '400',
+  variable: '--font-fira',
+  subsets: ['latin'],
+})
 
 export const metadata = {
   title: 'Create Next App',
@@ -15,7 +29,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body
+        className={`${mont.variable} ${fira.variable} overflow-x-hidden relative`}
+      >
+        <Navbar />
+        {children}
+        <Footer />
+        <Toaster />
+      </body>
     </html>
   )
 }
